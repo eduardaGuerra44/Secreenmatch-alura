@@ -1,7 +1,10 @@
 
 import br.com.alura.calculos.CalculadoraDeTempo;
+import br.com.alura.calculos.FiltroRecomendacao;
+import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
+
 
 
 public class Principal {
@@ -22,9 +25,9 @@ public class Principal {
         outroFilme.setIncluidoNoPlano(true);
 
       meuFilme.exibeFichaTecnica();
-      meuFilme.avalia(7);
-      meuFilme.avalia(9);
-      meuFilme.avalia(2);
+      meuFilme.avalia(8);
+      meuFilme.avalia(10);
+      meuFilme.avalia(5);
 
         System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacoes());
         System.out.println(meuFilme.pegaMedia());
@@ -43,9 +46,20 @@ public class Principal {
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
         calculadora.inclui(meuFilme);
         calculadora.inclui(outroFilme);
+        calculadora.inclui(serie);
         System.out.println(calculadora.getTempoTotal());
 
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+            filtro.filtra(meuFilme);
+
+        Episodio episodio = new Episodio();
+        episodio.setNumero(1);
+        episodio.setSerie("la casa de papel");
+        episodio.setTotalVisualizacoes(300);
+        filtro.filtra(episodio);
+
     }
+
 }
 
 
