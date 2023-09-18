@@ -5,37 +5,34 @@ import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
+import java.util.ArrayList;
 
 
 public class Principal {
     public static void main(String[] args) {
         // instância
-        Filme meuFilme = new Filme();
+        var filmeA = new Filme("A culpa é das estrelas",2013);
+        filmeA.setDuracaoEmMinutos(130);
+        filmeA.setIncluidoNoPlano(true);
 
-        meuFilme.setNome("A culpa é das estrelas");
-        meuFilme.setAnoDeLancamento(2013);
-        meuFilme.setDuracaoEmMinutos(130);
-        meuFilme.setIncluidoNoPlano(true);
+        var filmeB = new Filme("Barbie", 2023);
+        filmeB.setDuracaoEmMinutos(150);
+        filmeB.setIncluidoNoPlano(true);
 
-        Filme outroFilme = new Filme();
+        var filmeC = new Filme("Megatubarão 2", 2023);
+        filmeC.setDuracaoEmMinutos(190);
+        filmeC.setIncluidoNoPlano(false);
 
-        outroFilme.setNome("Barbie");
-        outroFilme.setAnoDeLancamento(2023);
-        outroFilme.setDuracaoEmMinutos(150);
-        outroFilme.setIncluidoNoPlano(true);
+      filmeA.exibeFichaTecnica();
+      filmeA.avalia(8);
+      filmeA.avalia(10);
+      filmeA.avalia(5);
 
-      meuFilme.exibeFichaTecnica();
-      meuFilme.avalia(8);
-      meuFilme.avalia(10);
-      meuFilme.avalia(5);
-
-        System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacoes());
-        System.out.println(meuFilme.pegaMedia());
+        System.out.println("Total de avaliações: " + filmeA.getTotalDeAvaliacoes());
+        System.out.println(filmeA.pegaMedia());
 
 
-        Serie serie = new Serie();
-        serie.setNome("La Casa de Papel");
-        serie.setAnoDeLancamento(2017);
+        var serie = new Serie("La Casa de Papel", 2017);
         serie.setIncluidoNoPlano(true);
         serie.setAtiva(true);
         serie.setTemporadas(5);
@@ -43,20 +40,31 @@ public class Principal {
         serie.setMinutosPorEpisodio(45);
 
 
-        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
-        calculadora.inclui(meuFilme);
-        calculadora.inclui(outroFilme);
+        var calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(filmeA);
+        calculadora.inclui(filmeB);
         calculadora.inclui(serie);
         System.out.println(calculadora.getTempoTotal());
 
         FiltroRecomendacao filtro = new FiltroRecomendacao();
-            filtro.filtra(meuFilme);
+            filtro.filtra(filmeA);
 
-        Episodio episodio = new Episodio();
+        var episodio = new Episodio();
         episodio.setNumero(1);
         episodio.setSerie("la casa de papel");
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
+
+       var listaDeFilmes = new ArrayList<Filme>();
+        listaDeFilmes.add(filmeA);
+        listaDeFilmes.add(filmeC);
+        listaDeFilmes.add(filmeB);
+
+        System.out.println("Tamanho da lista "+ listaDeFilmes.size());
+        System.out.println("Primeiro filme " + listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
+
+      
 
     }
 
