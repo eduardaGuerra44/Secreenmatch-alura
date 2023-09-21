@@ -1,3 +1,4 @@
+package br.com.alura.principal;
 
 import br.com.alura.calculos.CalculadoraDeTempo;
 import br.com.alura.calculos.FiltroRecomendacao;
@@ -35,6 +36,7 @@ public class Principal {
         var serie = new Serie("La Casa de Papel", 2017);
         serie.setIncluidoNoPlano(true);
         serie.setAtiva(true);
+
         serie.setTemporadas(5);
         serie.setEpisodiosPorTemporada(10);
         serie.setMinutosPorEpisodio(45);
