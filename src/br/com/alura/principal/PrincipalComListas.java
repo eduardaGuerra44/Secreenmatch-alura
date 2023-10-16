@@ -5,6 +5,9 @@ import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
@@ -32,5 +35,19 @@ public class PrincipalComListas {
             }
 
         }
+        var buscaPorArtista = new ArrayList<String>();
+        buscaPorArtista.add("Leonardo DiCaprio");
+        buscaPorArtista.add("Bruna Marquezine");
+        buscaPorArtista.add("Isis valverde");
+        System.out.println(buscaPorArtista);
+
+        Collections.sort(buscaPorArtista);
+        System.out.println(buscaPorArtista);
+
+        Collections.sort(listaDeAssistidos);
+        System.out.println("Lista de titulos ordenados " + listaDeAssistidos);
+
+        listaDeAssistidos.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println("Ordenando por ano de lançamento: " + listaDeAssistidos);
     }
 }
