@@ -1,4 +1,5 @@
 package br.com.alura.principal;
+import br.com.alura.excecao.ErroDeConversaoDeAnoException;
 import br.com.alura.screenmatch.modelos.Titulo;
 import br.com.alura.screenmatch.modelos.TituloOmdb;
 import com.google.gson.FieldNamingPolicy;
@@ -19,24 +20,25 @@ public class PrincipalComBusca {
         System.out.println("Digite um filme para buscar: ");
         var busca = leitura.nextLine();
 
-        try{
+
         String endereco = "https://www.omdbapi.com/?t=" + busca.replace(" ", "+") + "&apikey=c103065f";
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endereco))
-                .build();
+        try{
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(endereco))
+                    .build();
 
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
 
-        String json = response.body();
-      //  System.out.println(json);
+            String json = response.body();
+            //  System.out.println(json);
 
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .create();
-        TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
-        System.out.println(meuTituloOmdb);
+            Gson gson = new GsonBuilder()
+                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                    .create();
+            TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+            System.out.println(meuTituloOmdb);
 
 
             Titulo meuTitulo = new Titulo(meuTituloOmdb);
@@ -44,6 +46,8 @@ public class PrincipalComBusca {
             System.out.println(meuTitulo);
         } catch (NumberFormatException e){
             System.out.println("Aconteceu um erro: ");
+            System.out.println(e.getMessage());
+        }catch(ErroDeConversaoDeAnoException e){
             System.out.println(e.getMessage());
         }
 
