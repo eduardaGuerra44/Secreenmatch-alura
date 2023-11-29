@@ -1,0 +1,20 @@
+[
+  {
+    "Nome": "Barbie",
+    "AnoDeLancamento": 2023,
+    "IncluidoNoPlano": false,
+    "Avaliacao": 0.0,
+    "SomaDasAvaliacoes": 0.0,
+    "TotalDeAvaliacoes": 0,
+    "DuracaoEmMinutos": 114
+  },
+  {
+    "Nome": "Avatar",
+    "AnoDeLancamento": 2009,
+    "IncluidoNoPlano": false,
+    "Avaliacao": 0.0,
+    "SomaDasAvaliacoes": 0.0,
+    "TotalDeAvaliacoes": 0,
+    "DuracaoEmMinutos": 162
+  }
+]
